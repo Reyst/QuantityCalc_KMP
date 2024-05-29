@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Quantity calculator</string>
+    <string name="income">Income</string>
+    <string name="outcome">Outcome</string>
+    <string name="absolute_loss">Absolute loss</string>
+    <string name="percent_sign">%</string>
+    <string name="percent_of_loss">Percent of loss</string>
+    <string name="desired_amount">Desired amount</string>
+    <string name="precision">Precision</string>
+    <string name="result">Result:</string>
+    <string name="value_is_unreachable">Value is unreachable</string>
+
+    <string name="income_colon">Income:</string>
+    <string name="outcome_colon">Outcome:</string>
+    <string name="relative_colon">Relative losses:</string>
+    <string name="absolute_colon">Absolute losses:</string>
+
+</resources>
