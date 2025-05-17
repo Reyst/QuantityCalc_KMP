@@ -42,13 +42,7 @@ import quantitycalc.composeapp.generated.resources.precision
 fun CalculatorScreen(
     calcType: CalcType,
     modifier: Modifier = Modifier,
-//    onTabSelected: (CalcType) -> Unit,
-//    onParamsChangeListener: () -> Unit,
 ) {
-
-//    val decimalInputFormatter = remember { DecimalInputFormatter() }
-//    val numberTransformation = remember { DecimalInputVisualTransformation(decimalInputFormatter) }
-
     val calc: QuantityCalc = remember(calcType) { QuantityCalc.getCalcByType(calcType) }
 
     var baseValue by rememberSaveable { mutableStateOf("") }
@@ -85,36 +79,33 @@ fun CalculatorScreen(
 
             OutlinedTextField(
                 value = baseValue,
-                onValueChange = { baseValue = it /*decimalInputFormatter.cleanup(it)*/ },
+                onValueChange = { baseValue = it },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                 label = { Text(text = labelText) },
                 singleLine = true,
-//                visualTransformation = numberTransformation,
                 modifier = Modifier.fillMaxWidth()
             )
             OutlinedTextField(
                 value = percentValue,
-                onValueChange = { percentValue = it /*decimalInputFormatter.cleanup(it)*/ },
+                onValueChange = { percentValue = it },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                 label = { Text(text = stringResource(Res.string.percent_of_loss)) },
                 prefix = { Text(text = stringResource(Res.string.percent_sign)) },
                 singleLine = true,
-//                visualTransformation = numberTransformation,
                 modifier = Modifier.fillMaxWidth()
             )
             OutlinedTextField(
                 value = absoluteValue,
-                onValueChange = { absoluteValue = it /*decimalInputFormatter.cleanup(it)*/ },
+                onValueChange = { absoluteValue = it },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                 label = { Text(stringResource(Res.string.absolute_loss)) },
                 singleLine = true,
-//                visualTransformation = numberTransformation,
                 modifier = Modifier.fillMaxWidth()
             )
 
             OutlinedTextField(
                 value = precision.toString(),
-                onValueChange = { /*precision = decimalInputFormatter.cleanup(it)*/ },
+                onValueChange = { },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 label = { Text(stringResource(Res.string.precision)) },
                 singleLine = true,
@@ -138,15 +129,11 @@ fun CalculatorScreen(
                         }
                     }
                 },
-//                visualTransformation = numberTransformation,
-
-//                modifier = Modifier.fillMaxWidth()
             )
         }
         Box(
             modifier = Modifier
                 .weight(1F)
-//                .padding(12.dp)
                 .fillMaxWidth(),
         ) {
             ResultOutput(

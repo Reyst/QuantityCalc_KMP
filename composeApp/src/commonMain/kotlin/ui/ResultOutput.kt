@@ -1,6 +1,7 @@
 package ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import domain.model.CalculationResult
 import domain.model.isValid
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import quantitycalc.composeapp.generated.resources.Res
 import quantitycalc.composeapp.generated.resources.absolute_colon
 import quantitycalc.composeapp.generated.resources.income_colon
@@ -59,8 +62,10 @@ fun ResultOutput(result: CalculationResult, precision: Int = 3) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-//                .background(Color.LightGray)
-                .background(MaterialTheme.colorScheme.secondaryContainer)
+                .background(
+                    color = MaterialTheme.colorScheme.secondaryContainer,
+                    shape = RoundedCornerShape(12.dp)
+                )
                 .wrapContentHeight()
                 .padding(12.dp)
         ) {
@@ -99,3 +104,16 @@ fun ResultOutput(result: CalculationResult, precision: Int = 3) {
         }
     }
 }
+
+@Composable
+@Preview
+private fun ResultOutputPreview() {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        ResultOutput(CalculationResult())
+
+        ResultOutput(CalculationResult(incomeValue = Double.NaN))
+    }
+}
+
